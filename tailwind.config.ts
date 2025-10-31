@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-        urbanist: ['Urbanist', 'sans-serif'],
+        playfair: ['Playfair Display', 'serif'],
+        quicksand: ['Quicksand', 'sans-serif'],
+        cormorant: ['Cormorant Garamond', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
