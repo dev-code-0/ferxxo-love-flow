@@ -1,13 +1,37 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useRef, useEffect } from "react";
+import HeroSection from "@/components/HeroSection";
+import PhotoGallery from "@/components/PhotoGallery";
+import MusicPlayer from "@/components/MusicPlayer";
+import PhrasesSection from "@/components/PhrasesSection";
+import FinalSection from "@/components/FinalSection";
 
 const Index = () => {
+  const [showContent, setShowContent] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const handleEnter = () => {
+    setShowContent(true);
+  };
+
+  useEffect(() => {
+    if (showContent && contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [showContent]);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="min-h-screen">
+      <HeroSection onEnter={handleEnter} />
+      
+      {showContent && (
+        <div ref={contentRef} className="animate-fade-in">
+          <PhotoGallery />
+          <MusicPlayer />
+          <PhrasesSection />
+          <FinalSection />
+        </div>
+      )}
+    </main>
   );
 };
 
