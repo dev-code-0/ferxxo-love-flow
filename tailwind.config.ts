@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -90,6 +91,15 @@ export default {
           "50%": { transform: "translate(-5px, -20px)", opacity: "0.3" },
           "75%": { transform: "translate(-10px, -10px)", opacity: "0.5" },
         },
+        // Nuevas animaciones para "Lo que Siento"
+        "title-glow": {
+          "0%, 100%": { 
+            textShadow: "0 0 15px hsl(158 45% 58% / 0.6), 0 0 25px hsl(158 45% 58% / 0.4)" 
+          },
+          "50%": { 
+            textShadow: "0 0 15px hsl(25 85% 60% / 0.6), 0 0 25px hsl(25 85% 60% / 0.4)" 
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -98,8 +108,13 @@ export default {
         "float": "float 3s ease-in-out infinite",
         "glow-pulse": "glow-pulse 2s ease-in-out infinite",
         "particle-float": "particle-float 4s ease-in-out infinite",
+        "title-glow": "title-glow 3s ease-in-out infinite",
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;
