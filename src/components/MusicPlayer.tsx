@@ -5,27 +5,27 @@ const songs = [
   { 
     title: "California", 
     artist: "Ferxxo",
-    src: "/src/assets/California.mp3"
+    src: "/music/California.mp3"
   },
   { 
     title: "Hypnotixx", 
     artist: "Ferxxo",
-    src: "/src/assets/Hypnotixx.mp3"
+    src: "/music/Hypnotixx.mp3"
   },
   { 
     title: "Le pido a Dios", 
     artist: "Ferxxo",
-    src: "/src/assets/Le_pido_a_Dios.mp3"
+    src: "/music/Le_pido_a_Dios.mp3"
   },
   { 
     title: "Si supieras", 
     artist: "Ferxxo",
-    src: "/src/assets/Si_supieras.mp3"
+    src: "/music/Si_supieras.mp3"
   },
   { 
     title: "Yo AK", 
     artist: "Ferxxo",
-    src: "/src/assets/Yo_AK.mp3"
+    src: "/music/Yo_AK.mp3"
   },
 ];
 
@@ -77,8 +77,10 @@ const MusicPlayer = () => {
       }
     };
 
-    const handleError = () => {
-      console.error('Error loading audio');
+    const handleError = (e: Event) => {
+      console.error('Error loading audio:', e);
+      console.error('Current song src:', songs[currentSong].src);
+      console.error('Audio element:', audio);
       setIsAudioLoaded(false);
     };
 
@@ -144,6 +146,7 @@ const MusicPlayer = () => {
     } else {
       nextIndex = (currentSong + 1) % songs.length;
     }
+    console.log('Changing to next song:', songs[nextIndex].title, 'src:', songs[nextIndex].src);
     setCurrentSong(nextIndex);
     setIsPlaying(true);
     setTimeout(() => {
@@ -284,8 +287,17 @@ const MusicPlayer = () => {
               ref={audioRef}
               src={songs[currentSong].src}
               preload="auto"
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
+              onPlay={() => {
+                console.log('Audio started playing:', songs[currentSong].title);
+                setIsPlaying(true);
+              }}
+              onPause={() => {
+                console.log('Audio paused:', songs[currentSong].title);
+                setIsPlaying(false);
+              }}
+              onLoadStart={() => console.log('Loading audio:', songs[currentSong].src)}
+              onCanPlay={() => console.log('Audio can play:', songs[currentSong].title)}
+              onError={(e) => console.error('Audio error:', e, 'for', songs[currentSong].src)}
             />
 
             {/* Información de la canción actual */}
