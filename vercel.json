@@ -1,9 +1,6 @@
 {
-  "functions": {
-    "app/**/*.[jt]s": {
-      "maxDuration": 30
-    }
-  },
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/music/(.*)",
@@ -21,12 +18,6 @@
           "value": "audio/mpeg"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/music/(.*)",
-      "destination": "/music/$1"
     }
   ]
 }

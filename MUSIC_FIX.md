@@ -15,10 +15,12 @@
    - ❌ Antes: `"/src/assets/California.mp3"`
    - ✅ Ahora: `"/music/California.mp3"`
 
-3. **⚙️ Configuración Vercel añadida (`vercel.json`)**
+3. **⚙️ Configuración Vercel corregida (`vercel.json`)**
+   - ✅ Removida configuración innecesaria de funciones serverless
    - ✅ Headers CORS para archivos de audio
    - ✅ Cache-Control optimizado
    - ✅ Content-Type para archivos MP3
+   - ✅ Build y output directory especificados
 
 4. **🐛 Debugging añadido**
    - ✅ Console logs para errores de audio
@@ -30,7 +32,7 @@
 1. **Commit y push los cambios:**
    \`\`\`bash
    git add .
-   git commit -m "🎵 Fix: Audio files moved to public/music for Vercel compatibility"
+   git commit -m "🎵 Fix: Audio files + Vercel config corrected for deployment"
    git push
    \`\`\`
 
